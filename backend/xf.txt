@@ -1,0 +1,8 @@
+============================= test session starts =============================
+collecting ... collected 3 items
+
+tests/e2e/test_a_auth_rbac.py::test_auth_t06b_refresh_token_is_reusable_and_rotation_is_unobservable PASSED [ 33%]
+tests/e2e/test_d_sales_po_delivery.py::test_po_t04_po_status_transitions_are_validated PASSED [ 66%]
+tests/e2e/test_d_sales_po_delivery.py::test_po_t05_partial_and_full_deliveries_update_purchase_order PASSED [100%]
+
+============================= 3 passed in 21.20s ==============================

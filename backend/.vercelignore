@@ -1,0 +1,9 @@
+.vercel
+.pytest_cache
+__pycache__
+**/__pycache__
+tests
+*.db
+*.db.*
+*.sqlite
+*.sqlite3

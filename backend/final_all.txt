@@ -1,0 +1,18 @@
+........................................................................ [ 35%]
+........................................................................ [ 71%]
+..........................................................               [100%]
+============================== warnings summary ===============================
+..\.venv-test\Lib\site-packages\fastapi\testclient.py:1
+  E:\Projects\Freshshop\.venv-test\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/test_freshstock_intelligence.py::test_markdown_sale_is_recorded_in_verified_savings
+  E:\Projects\Freshshop\backend\tests\test_freshstock_intelligence.py:89: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    promo = Promotion(tenant_id=1, product_id=product.id, batch_id=batch.id, original_price=Decimal("10.00"), discounted_price=Decimal("7.00"), discount_percent=Decimal("30"), status=PromotionStatus.ACTIVE, strategy="SMART_MARKDOWN", start_date=datetime.utcnow())
+
+tests/test_freshstock_intelligence.py::test_markdown_sale_is_recorded_in_verified_savings
+  E:\Projects\Freshshop\backend\app\services\sales_engine.py:82: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    effective_sale_date = sale_date or datetime.utcnow()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+202 passed, 3 warnings in 135.61s (0:02:15)

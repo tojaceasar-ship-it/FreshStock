@@ -1,0 +1,24 @@
+{
+  "regions": ["fra1"],
+  "builds": [
+    {
+      "src": "app/main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app/main.py"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/integrations/poll",
+      "schedule": "0 2 * * *"
+    }
+  ],
+  "env": {
+    "USE_SQLITE": "false"
+  }
+}
