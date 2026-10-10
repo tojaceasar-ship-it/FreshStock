@@ -10,3 +10,4 @@ freshstock.db
 !.env.example
 
 .vercel
+.maintenance-backups/
