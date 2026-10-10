@@ -11,6 +11,7 @@
 
 - Repozytorium: `tojaceasar-ship-it/FreshStock`, gałąź `main`.
 - Bazowy commit przed rozszerzeniem narzędzia: `a8a3501fd563b5c30e388d905db9684590967b0b`.
+- Commit zawierający tryb pełnego resetu i dowody: `ed0eb8665fc413a5354383cece0c2b6f1aca5967` (wypchnięty do `origin/main`).
 - Środowisko: produkcja Vercel + produkcyjna baza PostgreSQL Neon.
 - Frontend: `https://freshstock-app.vercel.app`.
 - API: `https://freshstock-api.vercel.app`.
@@ -42,4 +43,4 @@
 
 ## Dokładny następny krok
 
-- Zacommitować i wypchnąć rozszerzony skrypt oraz ten checkpoint do `main`, po czym potwierdzić czysty status repozytorium.
+- Audyt tego zakresu zakończony; brak pozostałych czynności. Przy kolejnej operacji rozpocząć od odczytu tego checkpointu i ponownej kontroli środowiska docelowego.
