@@ -42,6 +42,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--execute", action="store_true")
     parser.add_argument("--list-admins", action="store_true")
+    parser.add_argument("--all-data", action="store_true", help="Retain only the migration version table")
     args = parser.parse_args()
     load_dotenv(".env.production.local")
     database_url = os.environ.get("DATABASE_URL", "")
@@ -60,7 +61,7 @@ def main() -> None:
     missing = {"tenants", "users"} - tables
     if missing:
         raise SystemExit(f"REFUSED: identity tables missing: {sorted(missing)}")
-    keep = KEEP_TABLES & tables
+    keep = ({"alembic_version"} if args.all_data else KEEP_TABLES) & tables
     operational = sorted(tables - keep)
 
     unsafe_dependencies = []
@@ -85,8 +86,9 @@ def main() -> None:
             print(json.dumps({"owners": [dict(row) for row in owners]}, default=str, indent=2))
         if not args.execute:
             return
-        if os.environ.get("ALLOW_PRODUCTION_RESET") != "FRESHSTOCK_OPERATIONAL_ONLY":
-            raise SystemExit("REFUSED: explicit ALLOW_PRODUCTION_RESET confirmation is missing")
+        expected_confirmation = "FRESHSTOCK_ALL_DATA" if args.all_data else "FRESHSTOCK_OPERATIONAL_ONLY"
+        if os.environ.get("ALLOW_PRODUCTION_RESET") != expected_confirmation:
+            raise SystemExit(f"REFUSED: set ALLOW_PRODUCTION_RESET={expected_confirmation}")
 
         backup_dir = Path(".maintenance-backups")
         backup_dir.mkdir(exist_ok=True)
